@@ -12,7 +12,7 @@ public class DBConnection {
     private static final String PASSWORD = System.getenv("MYSQLPASSWORD");
 
     private static final String URL =
-            "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE 
+            "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE
             + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
 
     public static Connection getConnection() {
@@ -20,13 +20,17 @@ public class DBConnection {
         Connection con = null;
 
         try {
+
+            // Debug Prints
+            System.out.println("HOST = " + HOST);
+            System.out.println("PORT = " + PORT);
+            System.out.println("DATABASE = " + DATABASE);
+            System.out.println("USERNAME = " + USERNAME);
+            System.out.println("URL = " + URL);
+
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            con = DriverManager.getConnection(
-                    URL,
-                    USERNAME,
-                    PASSWORD
-            );
+            con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
             System.out.println("Database Connected Successfully...");
 
